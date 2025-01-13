@@ -1,0 +1,134 @@
+/* src/components/Login.css */
+
+/* Container for background animations */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f8ff; /* Light background color */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating Animation for Hostel-themed icons */
+@keyframes float {
+  0% { transform: translateY(0px) translateX(0px); opacity: 1; }
+  50% { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
+  100% { transform: translateY(0px) translateX(0px); opacity: 1; }
+}
+
+/* Background animated items */
+.animated-icon {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.7;
+  width: 50px;
+  height: 50px;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Adjust position and delay for variety */
+.icon-football { top: 20%; left: 10%; animation-delay: 0s; }
+.icon-basketball { top: 40%; left: 70%; animation-delay: 1s; }
+.icon-book { top: 75%; left: 30%; animation-delay: 2s; }
+.icon-dumbbell { top: 55%; left: 50%; animation-delay: 3s; }
+.icon-tennis { top: 15%; left: 80%; animation-delay: 4s; }
+
+/* Styling for Login Box */
+.login-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.login-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Input styles */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  font-weight: bold;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Button styling */
+.login-button, .reset-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover, .reset-button:hover {
+  background-color: #45a049;
+}
+
+.forgot-password-link, .back-to-login-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.forgot-password-link button, .back-to-login-link button {
+  background: none;
+  color: #007BFF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 20px;
+    width: 90%;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .login-button, .reset-button {
+    font-size: 14px;
+  }
+}
