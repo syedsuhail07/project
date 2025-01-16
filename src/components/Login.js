@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
-function Login({ onLogin }) {
+function Login() {
   const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -13,20 +13,26 @@ function Login({ onLogin }) {
   };
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    const isAuthenticated = onLogin(loginInfo);
-    if (isAuthenticated) {
-      setError('');
-      navigate('/home');
+    e.preventDefault(); // Prevent form refresh
+
+    const { email, password } = loginInfo;
+
+    // Debugging: Log the credentials to ensure they are captured correctly
+    console.log('Email:', email, 'Password:', password);
+
+    // Navigate based on credentials
+    if (email === 'admin@example.com' && password === 'admin123') {
+      navigate('/admin'); // Redirect to admin dashboard
+    } else if (email === 'user@example.com' && password === 'user123') {
+      navigate('/home'); // Redirect to user dashboard
     } else {
       setError('Invalid email or password');
     }
   };
 
   return (
-    
     <div className="login-container">
-      <div className="login-box"> 
+      <div className="login-box">
         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Hostel Logo" className="login-logo" />
         <h2>Login</h2>
         <form onSubmit={handleLogin}>

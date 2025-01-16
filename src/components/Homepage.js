@@ -42,7 +42,7 @@ function Homepage() {
             <button onClick={toggleDropdown}>More</button>
             {dropdown && (
               <ul className="dropdown-menu">
-                <li><Link to="/">Logout</Link></li>
+                <li><Link to="/login">Logout</Link></li>
               </ul>
             )}
           </li>

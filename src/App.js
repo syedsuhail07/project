@@ -1,30 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Homepage from './components/Homepage';
+import Adminhome from './components/Adminhome';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLogin = (credentials) => {
-    const { email, password } = credentials;
-    if (email === 'test@example.com' && password === 'password') {
-      setIsAuthenticated(true);
-      return true;
-    }
-    return false;
-  };
-
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Login onLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={isAuthenticated ? <Homepage /> : <Navigate to="/" />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/admin" element={<Adminhome />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Router>
   );
 }
