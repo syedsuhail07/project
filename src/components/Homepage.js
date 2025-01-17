@@ -38,20 +38,17 @@ function Homepage() {
           <li className="item"><Link to="#">Room Booking</Link></li>
           <li className="item"><Link to="#">Outpass Registration</Link></li>
           <li className="item"><Link to="#">Hostel Vacate Management</Link></li>
-          <li className="dropdown">
-            <button onClick={toggleDropdown}>More</button>
-            {dropdown && (
-              <ul className="dropdown-menu">
-                <li><Link to="/login">Logout</Link></li>
-              </ul>
-            )}
-          </li>
         </ul>
-        <div className="profile">
+        <div className="profile" onClick={toggleDropdown}>
           <div className="profile-icon">
             <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile" />
           </div>
           <p>User</p>
+          {dropdown && (
+            <ul className="dropdown-menu dropdown-menu-show">
+              <li><Link to="/login">Logout</Link></li>
+            </ul>
+          )}
         </div>
       </div>
 
