@@ -33,6 +33,7 @@ function Homepage() {
           <h3>Hostel System</h3>
         </div>
         <ul className="nav-links">
+        <li className="item"><Link to="#">Dashboard</Link></li>
           <li className="item"><Link to="#">Complaint registration</Link></li>
           <li className="item"><Link to="#">Change Room Request</Link></li>
           <li className="item"><Link to="#">Room Booking</Link></li>
@@ -46,7 +47,9 @@ function Homepage() {
           <p>User</p>
           {dropdown && (
             <ul className="dropdown-menu dropdown-menu-show">
+              <li><Link to="/profile">Profile</Link></li>
               <li><Link to="/login">Logout</Link></li>
+
             </ul>
           )}
         </div>

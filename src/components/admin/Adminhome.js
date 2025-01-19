@@ -17,6 +17,9 @@ function Adminhome() {
           <h3>Admin Panel</h3>
         </div>
         <ul className="nav-links">
+        <li className="item">
+            <Link to="/admin">Dashboard</Link>
+          </li>
           <li className="item">
             <Link to="#">Manage Complaints</Link>
           </li>
