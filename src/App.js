@@ -6,6 +6,7 @@ import Homepage from './components/user/Homepage';
 import Adminhome from './components/admin/Adminhome';
 import Userdashboard from './components/user/userdashboard';
 import UserProfile from './components/user/userprofile';
+import Outpass from './components/admin/outpass';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/admin" element={<Adminhome />} />
         <Route path="/user-dashboard" element={<Userdashboard />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/outpass" element={<Outpass />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

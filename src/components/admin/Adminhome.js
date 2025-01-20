@@ -24,7 +24,7 @@ function Adminhome() {
             <Link to="#">Manage Complaints</Link>
           </li>
           <li className="item">
-            <Link to="#">Approve Outpasses</Link>
+            <Link to="/outpass">Approve Outpasses</Link>
           </li>
           <li className="item">
             <Link to="#">Room Allocation</Link>
