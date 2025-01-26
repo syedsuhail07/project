@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Use Link for navigation
 // import Navbar from '../components/shared/navbar';
-import "../styles/HeroSection.css"; 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "/userdashboard.css";
+import ".//userdashboard.css";
 const HomePage = () => {
   return (
     <div>

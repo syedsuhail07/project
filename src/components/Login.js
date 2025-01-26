@@ -24,7 +24,7 @@ function Login() {
     if (email === 'admin@example.com' && password === 'admin123') {
       navigate('/admin'); // Redirect to admin dashboard
     } else if (email === 'user@example.com' && password === 'user123') {
-      navigate('/home'); // Redirect to user dashboard
+      navigate('/user-dashboard'); // Redirect to user dashboard
     } else {
       setError('Invalid email or password');
     }
