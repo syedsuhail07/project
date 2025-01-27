@@ -1,0 +1,37 @@
+/* Purpose Section */
+.purpose-section {
+    background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Team Section */
+  .team-section .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+  }
+  
+  .team-section .team-member {
+    margin-bottom: 20px;
+  }
+  
+  .team-section .social-icons {
+    font-size: 1.2rem;
+  }
+  
+  /* Vision Section */
+  .vision-section {
+    background-color: #f8f9fa;
+  }
+  
+  .vision-section .vision-image {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #e3f2fd, #fff);
+    border-radius: 10px;
+  }
+  

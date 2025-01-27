@@ -1,0 +1,49 @@
+/* Access Section */
+.access-section h1 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .access-section p {
+    color: #6c757d;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .card h5 {
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  .card a {
+    font-size: 0.9rem;
+    color: #007bff;
+  }
+  
+  /* Living Images Section */
+  .living-images-section h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .living-images-section p {
+    color: #6c757d;
+  }
+  
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-placeholder {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+  }
+  

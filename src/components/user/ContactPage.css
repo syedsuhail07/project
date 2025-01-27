@@ -1,0 +1,49 @@
+/* Get in Touch Section */
+.get-in-touch-section h1 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .get-in-touch-section p {
+    color: #6c757d;
+  }
+  
+  .get-in-touch-section a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .get-in-touch-section a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Contact Us Today Section */
+  .contact-us-section h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .contact-us-section p {
+    color: #6c757d;
+  }
+  
+  .form-placeholder {
+    height: 200px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+  }
+  
+  footer h3 {
+    font-weight: bold;
+  }
+  
+  footer .d-flex span {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  footer p {
+    color: #adb5bd;
+    margin-top: 10px;
+  }
+  
