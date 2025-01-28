@@ -5,6 +5,27 @@ import ".//userdashboard.css";
 const HomePage = () => {
   return (
     <div>
+      <div>
+      <nav>
+        <ul>
+          <li>
+          <Link to="">Hostel Hub</Link>
+          <br></br>
+          <Link to="/home">Home</Link>
+          <br></br>
+          <Link to="/about">About</Link>
+          <br></br>
+          <Link to="/resources">Resources</Link>
+          <br></br>
+          <Link to="/experiences">Experiences</Link> {/* Add this link */}
+          <br></br>
+          <Link to="/contact">Contact Us</Link>
+          </li>
+          {/* Other navigation items */}
+        </ul>
+      </nav>
+    </div>
+
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
         <a className="navbar-brand" href="#">Hostel Hub</a>
