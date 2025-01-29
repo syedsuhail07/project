@@ -1,11 +1,21 @@
 import React from "react";
-// import { Link } from "react-router-dom"; // Use Link for navigation
-// import Navbar from '../components/shared/navbar';
+// import { Link } from "react-router-dom"; 
 import "./HeroSection.css"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Homepage.css';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    if (!isAuthenticated) {
+        navigate("/login"); // ✅ Redirect to login if not logged in
+    }
+}, [navigate]);
+
   return (
     <div>
       {/* Navbar */}
@@ -42,7 +52,7 @@ const HomePage = () => {
             Convenient online platform for students to book rooms, request changes,
             generate outpasses, submit complaints, and more.
           </p>
-          <button className="btn btn-primary">Explore</button>
+          <button className="btn btn-primary" onClick={() => navigate("/experiences")}>Explore</button>
         </div>
       </section>
 
@@ -51,7 +61,25 @@ const HomePage = () => {
         <div className="container">
           <h2 className="display-4 text-uppercase">Discover More</h2>
           <p className="mt-3">Welcome to Hostel Hub, where convenience meets comfort for student accommodations.</p>
-          <button className="btn btn-outline-primary">Explore</button>
+          <button
+    style={{
+        color: "black",
+        border: "2px solid blue",
+        padding: "10px 20px",
+        fontSize: "16px",
+        fontWeight: "bold",
+        background: "transparent",
+        borderRadius: "8px",
+        cursor: "pointer",
+        transition: "0.3s",
+    }}
+    onMouseEnter={(e) => (e.target.style.background = "blue", e.target.style.color = "white")}
+    onMouseLeave={(e) => (e.target.style.background = "transparent", e.target.style.color = "black")}
+    onClick={() => navigate("/resources")}
+>
+    Explore
+</button>
+
         </div>
       </section>
 
@@ -66,13 +94,17 @@ const HomePage = () => {
 
     <section className="hero-section d-flex flex-column justify-content-center align-items-center">
       <h1 className="hero-title">book your room <br /> <span>Comfortable and Hassle-free stay</span></h1>
-      <button className="btn btn-light hero-button">Book Now</button>
+      <button className="btn btn-light hero-button" onClick={() => navigate("/bookroom")}>Book Now</button>
     </section>
+    <div>
+      {/* <h1>Welcome to the Hostel Management System</h1> */}
+      {/* <button onClick={() => navigate("/bookroom")}>Book Now</button> */}
+    </div>
 
     <div className="row text-center mt-4">
       <div className="col-md-6 col-lg-3 mb-4">
         <div className="card feature-card">
-          <h5 className="card-title">Change Room Request</h5>
+          <h5 className="card-title" onClick={() => navigate("/changeroom")}>Change Room Request</h5>
           <p className="card-text">
             Submit a request to change your room quickly and easily.
           </p>
@@ -80,7 +112,7 @@ const HomePage = () => {
       </div>
       <div className="col-md-6 col-lg-3 mb-4">
         <div className="card feature-card">
-          <h5 className="card-title">Generate Outpass</h5>
+          <h5 className="card-title" onClick={() => navigate("/generateoutpass")}>Generate Outpass</h5>
           <p className="card-text">
             Create outpasses efficiently to save time.
           </p>
@@ -88,7 +120,7 @@ const HomePage = () => {
       </div>
       <div className="col-md-6 col-lg-3 mb-4">
         <div className="card feature-card">
-          <h5 className="card-title">Complaints</h5>
+          <h5 className="card-title" onClick={() => navigate("/complaints")}>Complaints</h5>
           <p className="card-text">
             Submit and track complaints for faster resolution.
           </p>
@@ -96,7 +128,7 @@ const HomePage = () => {
       </div>
       <div className="col-md-6 col-lg-3 mb-4">
         <div className="card feature-card">
-          <h5 className="card-title">Vacate Room Request</h5>
+          <h5 className="card-title" onClick={() => navigate("/vacate")}>Vacate Room Request</h5>
           <p className="card-text">
             Request to vacate your room without hassle.
           </p>
@@ -144,6 +176,9 @@ const HomePage = () => {
               </div>
             </div>
           </div>
+          <footer className="text-center mt-5">
+          <p>© 2035 by Hostel Hub</p>
+        </footer>
         </div>
       </section>
     </div>

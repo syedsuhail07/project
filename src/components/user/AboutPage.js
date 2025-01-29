@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Homepage.css";
 import "./AboutPage.css";
 
 function AboutPage() {
+  const navigate = useNavigate();
   return (
     <div>
       {/* Navbar */}
@@ -40,7 +42,7 @@ function AboutPage() {
           <p className="lead">
             At Hostel Hub, our mission is to provide an intuitive platform for students to easily book rooms, request room changes, generate outpasses, raise complaints, and submit vacate room requests.
           </p>
-          <button className="btn btn-primary">Learn More</button>
+          <button className="btn btn-primary" onClick={() => navigate("/resources")}>Learn More</button>
         </div>
       </section>
 
@@ -52,37 +54,33 @@ function AboutPage() {
             <div className="col-md-3 text-center">
               <div className="team-member">
                 <div className="profile-picture bg-light"></div>
-                <h5>Jane Smith</h5>
-                <p>Adam Gupta</p>
+                <h5>Syed</h5>
                 <p>CTO</p>
-                <p className="social-icons">📷 📘 ✖️ 🔗</p>
+                <p className="social-icons">✖️</p>
               </div>
             </div>
             <div className="col-md-3 text-center">
               <div className="team-member">
                 <div className="profile-picture bg-light"></div>
-                <h5>David Lee</h5>
-                <p>Sophie Chen</p>
+                <h5>Mazen</h5>
                 <p>COO</p>
-                <p className="social-icons">📷 📘 ✖️ 🔗</p>
+                <p className="social-icons">📘</p>
               </div>
             </div>
             <div className="col-md-3 text-center">
               <div className="team-member">
                 <div className="profile-picture bg-light"></div>
-                <h5>Sara Johnson</h5>
-                <p>Mohammed Ali</p>
+                <h5>Jesvin </h5>
                 <p>Marketing Manager</p>
-                <p className="social-icons">📷 📘 ✖️ 🔗</p>
+                <p className="social-icons">📷 </p>
               </div>
             </div>
             <div className="col-md-3 text-center">
               <div className="team-member">
                 <div className="profile-picture bg-light"></div>
-                <h5>Michael Brown</h5>
-                <p>Job Title</p>
+                <h5>Ayman</h5>
                 <p>Customer Support</p>
-                <p className="social-icons">📷 📘 ✖️ 🔗</p>
+                <p className="social-icons">🔗</p>
               </div>
             </div>
           </div>
@@ -97,7 +95,25 @@ function AboutPage() {
               <h2>Our Vision. Our Mission. Our Legacy.</h2>
               <p>All About Our Story</p>
               <p>This is the space to introduce visitors to the business or brand. Briefly explain who's behind it, what it does and what makes it unique.</p>
-              <button className="btn btn-outline-primary">Explore</button>
+              {/* <button
+    style={{
+        color: "black",
+        border: "2px solid blue",
+        padding: "10px 20px",
+        fontSize: "16px",
+        fontWeight: "bold",
+        background: "transparent",
+        borderRadius: "8px",
+        cursor: "pointer",
+        transition: "0.3s",
+    }}
+    onMouseEnter={(e) => (e.target.style.background = "blue", e.target.style.color = "white")}
+    onMouseLeave={(e) => (e.target.style.background = "transparent", e.target.style.color = "black")}
+    onClick={() => navigate("/bookRoom")}
+>
+    Explore
+</button> */}
+
             </div>
             <div className="col-md-6 d-flex justify-content-center">
               <div className="vision-image bg-light"></div>
@@ -108,7 +124,7 @@ function AboutPage() {
 
       {/* Footer Section */}
       <footer className="text-center py-4 bg-light">
-        <p>© 2035 by Business Name. Built on Wix Studio</p>
+        <p>© 2025 by Hostel Hub</p>
       </footer>
     </div>
   );

@@ -64,7 +64,7 @@ function ContactPage() {
               <span>Name</span>
               <span>Message Here</span>
             </div>
-            <p className="mt-4">© 2035 by Business Name. Built on Wix Studio</p>
+            <p className="mt-4">© 2035 by Hostel Hub</p>
           </footer>
         </div>
       </section>
