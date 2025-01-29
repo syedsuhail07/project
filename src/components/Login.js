@@ -21,15 +21,15 @@ function Login() {
     console.log('Email:', email, 'Password:', password);
 
     // Navigate based on credentials
-    if ((email === 'admin@example.com' && password === 'admin123') || 
-        (email === 'user@example.com' && password === 'user123')) {
-        
-        localStorage.setItem("isAuthenticated", "true"); // Store login status
-        navigate('/home'); // Redirect to Home Page
+    if (email === 'admin@example.com' && password === 'admin123') {
+      navigate('/admin'); // Redirect to admin dashboard
+    } else if (email === 'user@example.com' && password === 'user123') {
+      navigate('/home'); // Redirect to user dashboard
     } else {
-        setError('Invalid email or password');
+      setError('Invalid email or password');
     }
   };
+
 
   return (
     <div className="login-container">
