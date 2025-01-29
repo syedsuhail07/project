@@ -97,8 +97,6 @@ const HomePage = () => {
       <button className="btn btn-light hero-button" onClick={() => navigate("/bookroom")}>Book Now</button>
     </section>
     <div>
-      {/* <h1>Welcome to the Hostel Management System</h1> */}
-      {/* <button onClick={() => navigate("/bookroom")}>Book Now</button> */}
     </div>
 
     <div className="row text-center mt-4">
@@ -112,7 +110,7 @@ const HomePage = () => {
       </div>
       <div className="col-md-6 col-lg-3 mb-4">
         <div className="card feature-card">
-          <h5 className="card-title" onClick={() => navigate("/generateoutpass")}>Generate Outpass</h5>
+          <h5 className="card-title" onClick={() => navigate("/outpass")}>Generate Outpass</h5>
           <p className="card-text">
             Create outpasses efficiently to save time.
           </p>

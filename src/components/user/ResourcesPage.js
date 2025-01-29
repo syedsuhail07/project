@@ -41,24 +41,7 @@ function ResourcesPage(){
               <p>
                 Welcome to Hostel Hub, your one-stop platform for all your hostel needs. With just a few clicks, you can book a room, request a room change, generate an outpass, file a complaint, or request to vacate a room. For admins, easily manage all user requests and ensure a smooth experience for all users.
               </p>
-              <button
-    style={{
-        color: "black",
-        border: "2px solid blue",
-        padding: "10px 20px",
-        fontSize: "16px",
-        fontWeight: "bold",
-        background: "transparent",
-        borderRadius: "8px",
-        cursor: "pointer",
-        transition: "0.3s",
-    }}
-    onMouseEnter={(e) => (e.target.style.background = "blue", e.target.style.color = "white")}
-    onMouseLeave={(e) => (e.target.style.background = "transparent", e.target.style.color = "black")}
-    onClick={() => navigate("/home")} 
->
-    Explore
-</button>
+              
 
             </div>
             <div className="col-md-6">

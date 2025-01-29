@@ -38,7 +38,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/bookroom" element={<BookRoom />} />
         <Route path="/changeroom" element={<ChangeRoom />} />
-        <Route path="/generate-outpass" element={<GenerateOutPass />} />
+        <Route path="/outpass" element={<GenerateOutPass />} />
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/vacate" element={<VacateRoom />} />
         <Route path="/profile" element={<UserProfileDropdown />} />

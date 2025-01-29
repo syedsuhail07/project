@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./generateOutpass.css";
+import { useNavigate } from 'react-router-dom';
+
 
 const GenerateOutpass = () => {
+  const navigate = useNavigate();
+
   const [outpassDetails, setOutpassDetails] = useState({
     name: "",
     guardianName: "",
@@ -34,7 +38,7 @@ const GenerateOutpass = () => {
 
   return (
     <div className="container generate-outpass mt-5">
-      <h2 className="text-center mb-4">Generate Outpass</h2>
+      <h2 className="text-center mb-4" onClick={() => navigate("/generate-outpass")}>Generate Outpass</h2>
       {!generated ? (
         <form onSubmit={handleSubmit} className="outpass-form">
           <div className="form-group mb-3">
