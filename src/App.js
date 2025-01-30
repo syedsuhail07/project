@@ -49,6 +49,7 @@ function App() {
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/room-allocation" element={<RoomAllocation />} />
         <Route path="/outpass-data" element={<OutpassData />} />
+        
         <Route path="/complaints-page" element={<ComplaintsPage />} />
 
         {/* <Route path="/admin-tickets" element={<AdminTickets />} />

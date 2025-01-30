@@ -75,7 +75,7 @@ const RoomAllocation = () => {
             <Link to="/outpass-data" className="nav-link">
               Outpass Data
             </Link>
-            <Link to="/complaints" className="nav-link">
+            <Link to="/complaints-page" className="nav-link">
               Complaints
             </Link>
           </div>

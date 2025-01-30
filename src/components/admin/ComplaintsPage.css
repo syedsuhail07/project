@@ -1,7 +1,52 @@
-/* Complaints Styles */
+/* Improved Styling */
 .complaints-container {
     min-height: 100vh;
-    background-color: #f5f6fa;
+    background: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .admin-navbar {
+    background: #2c3e50;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .nav-brand {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    margin-left: 3rem;
+  }
+  
+  .nav-link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .nav-link:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+  }
+  
+  .nav-link.active {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.3);
   }
   
   .complaints-content {
@@ -16,79 +61,84 @@
   
   .search-container input {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
     font-size: 1rem;
+    transition: border-color 0.3s ease;
   }
   
-  .complaints-table-container {
-    overflow-x: auto;
+  .search-container input:focus {
+    border-color: #3498db;
+    outline: none;
   }
   
   .complaints-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   }
   
   .complaints-table th,
   .complaints-table td {
-    padding: 1rem;
+    padding: 1.2rem;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0f0f0;
   }
   
   .complaints-table th {
-    background-color: #2c3e50;
+    background: #3498db;
     color: white;
+    font-weight: 500;
     cursor: pointer;
+    transition: background 0.3s ease;
   }
   
   .complaints-table th:hover {
-    background-color: #34495e;
-  }
-  
-  .complaints-table tr:hover {
-    background-color: #f9f9f9;
+    background: #2980b9;
   }
   
   .status-badge {
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
+    display: inline-block;
   }
   
   .status-badge.pending {
-    background-color: #fff3cd;
-    color: #856404;
+    background: #f1c40f;
+    color: #2c3e50;
   }
   
   .status-badge.in-progress {
-    background-color: #cce5ff;
-    color: #004085;
+    background: #3498db;
+    color: white;
   }
   
   .status-badge.resolved {
-    background-color: #d4edda;
-    color: #155724;
+    background: #2ecc71;
+    color: white;
   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
-    .complaints-table th,
-    .complaints-table td {
-      padding: 0.8rem;
-      font-size: 0.9rem;
-    }
-    
     .nav-links {
       gap: 1rem;
+      margin-left: 1rem;
     }
     
     .nav-link {
-      padding: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .complaints-table th,
+    .complaints-table td {
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   }

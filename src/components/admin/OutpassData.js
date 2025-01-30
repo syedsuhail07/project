@@ -75,7 +75,7 @@ const OutpassData = () => {
             <Link to="/outpass-data" className="nav-link active">
               Outpass Data
             </Link>
-            <Link to="/complaints" className="nav-link">
+            <Link to="/complaints-page" className="nav-link">
               Complaints
             </Link>
           </div>
