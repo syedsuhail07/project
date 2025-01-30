@@ -10,7 +10,8 @@ function ResourcesPage(){
     <div>
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
-        <a className="navbar-brand">Hostel Hub</a>
+      <a className="navbar-brand"> <b>Hostel Hub</b></a>
+
         <button
           className="navbar-toggler"
           type="button"

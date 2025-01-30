@@ -3,10 +3,13 @@ import {BrowserRouter as Router, Routes, Route, Navigate, Link,} from "react-rou
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Homepage from "./components/user/Homepage";
-import Adminhome from "./components/admin/Adminhome";
-import AdminTickets from "./components/admin/AdminTickets";
-import UserProfile from "./components/user/UserProfileDropdown";
-import Outpass from "./components/admin/outpass";
+import AdminHome from "./components/admin/AdminHome";
+import RoomAllocation from "./components/admin/RoomAllocation";
+import OutpassData from './components/admin/OutpassData';
+import ComplaintsPage from './components/admin/ComplaintsPage';
+// import AdminTickets from "./components/admin/AdminTickets";
+import UserProfile from "./components/user/Profile";
+// import Outpass from "./components/admin/Outpass";
 import AboutPage from "./components/user/AboutPage";
 import ExperiencesPage from "./components/user/ExperiencesPage";
 import ResourcesPage from "./components/user/ResourcesPage";
@@ -17,7 +20,7 @@ import GenerateOutPass from "./components/user/GenerateOutPass";
 import Complaints from "./components/user/Complaints";
 import VacateRoom from "./components/user/VacateRoom";
 
-import UserProfileDropdown from "./components/user/UserProfileDropdown"; // ✅ Adjust path if needed
+import Profile from "./components/user/Profile"; // Adjust path if needed
 
 
 
@@ -41,12 +44,15 @@ function App() {
         <Route path="/outpass" element={<GenerateOutPass />} />
         <Route path="/complaints" element={<Complaints />} />
         <Route path="/vacate" element={<VacateRoom />} />
-        <Route path="/profile" element={<UserProfileDropdown />} />
+        <Route path="/profile" element={<Profile />} />
 
         {/* Admin Routes */}
-        <Route path="/admin" element={<Adminhome />} />
-        <Route path="/admin-tickets" element={<AdminTickets />} />
-        <Route path="/admin-outpass" element={<Outpass />} />
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/room-allocation" element={<RoomAllocation />} />
+        <Route path="/outpass-data" element={<OutpassData />} />
+        <Route path="/complaints-page" element={<ComplaintsPage />} />
+        {/* <Route path="/admin-tickets" element={<AdminTickets />} />
+        <Route path="/admin-outpass" element={<Outpass />} /> */}
 
         {/* Catch all route */}
         <Route path="*" element={<Navigate to="/" />} />

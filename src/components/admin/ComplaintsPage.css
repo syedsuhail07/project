@@ -1,0 +1,94 @@
+/* Complaints Styles */
+.complaints-container {
+    min-height: 100vh;
+    background-color: #f5f6fa;
+  }
+  
+  .complaints-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .search-container {
+    margin: 2rem 0;
+  }
+  
+  .search-container input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .complaints-table-container {
+    overflow-x: auto;
+  }
+  
+  .complaints-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .complaints-table th,
+  .complaints-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .complaints-table th {
+    background-color: #2c3e50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .complaints-table th:hover {
+    background-color: #34495e;
+  }
+  
+  .complaints-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .status-badge.in-progress {
+    background-color: #cce5ff;
+    color: #004085;
+  }
+  
+  .status-badge.resolved {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .complaints-table th,
+    .complaints-table td {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .nav-links {
+      gap: 1rem;
+    }
+    
+    .nav-link {
+      padding: 0.5rem;
+    }
+  }

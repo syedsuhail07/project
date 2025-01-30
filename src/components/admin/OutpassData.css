@@ -1,0 +1,94 @@
+/* Outpass Data Styles */
+.outpass-data-container {
+    min-height: 100vh;
+    background-color: #f5f6fa;
+  }
+  
+  .outpass-data-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .search-container {
+    margin: 2rem 0;
+  }
+  
+  .search-container input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .outpass-table-container {
+    overflow-x: auto;
+  }
+  
+  .outpass-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .outpass-table th,
+  .outpass-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .outpass-table th {
+    background-color: #2c3e50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .outpass-table th:hover {
+    background-color: #34495e;
+  }
+  
+  .outpass-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.approved {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .status-badge.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .outpass-table th,
+    .outpass-table td {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .nav-links {
+      gap: 1rem;
+    }
+    
+    .nav-link {
+      padding: 0.5rem;
+    }
+  }

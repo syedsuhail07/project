@@ -1,81 +1,93 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Adminhome.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './AdminHome.css'; // Create this CSS file
 
-function Adminhome() {
-  const [dropdown, setDropdown] = useState(false);
+const AdminHome = () => {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdown(!dropdown);
+  const handleLogout = () => {
+    // Perform logout actions
+    localStorage.removeItem('authToken');
+    window.location.href = '/login';
   };
 
   return (
-    <div className="adminhome-container">
-      {/* Horizontal Navigation Bar */}
-      <div className="topbar">
-        <div className="logo">
-          <h3>Admin Panel</h3>
-        </div>
-        <ul className="nav-links">
-        <li className="item">
-            <Link to="/admin">Dashboard</Link>
-          </li>
-          <li className="item">
-            <Link to="#">Manage Complaints</Link>
-          </li>
-          <li className="item">
-            <Link to="/outpass">Approve Outpasses</Link>
-          </li>
-          <li className="item">
-            <Link to="#">Room Allocation</Link>
-          </li>
-        </ul>
-        <div className="profile">
-          <button onClick={toggleDropdown} className="admin-button">
-            Admin
-          </button>
-          <div className="profile-icon">
-            <img
-              src="https://www.w3schools.com/w3images/avatar2.png"
-              alt="Profile"
-            />
+    <div className="admin-container">
+      {/* Navigation Bar */}
+      <nav className="admin-navbar">
+        <div className="nav-left">
+          <div className="logo">
+            <h2>Admin Panel</h2>
           </div>
-          {dropdown && (
-            <ul className="dropdown-menu dropdown-menu-show">
-              <li>
-                <Link to="/login">Logout</Link>
-              </li>
-            </ul>
-          )}
+          <div className="nav-links">
+            <Link to="/room-allocation" className="nav-link">
+              Room Allocation
+            </Link>
+            <Link to="/outpass-data" className="nav-link">
+              Outpass Data
+            </Link>
+            <Link to="/complaints" className="nav-link">
+              Complaints
+            </Link>
+          </div>
         </div>
-      </div>
+        
+        {/* Logout Section */}
+        <div className="nav-right">
+          <button 
+            className="logout-btn"
+            onClick={() => setShowLogoutModal(true)}
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+        <div className="logout-modal">
+          <div className="modal-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to log out?</p>
+            <div className="modal-buttons">
+              <button 
+                className="cancel-btn"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Cancel
+              </button>
+              <button 
+                className="confirm-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
-      <div className="main-content">
-        <h2>Welcome, Admin</h2>
-
-        {/* Statistics Section */}
+      <main className="admin-content">
+        <h1>Welcome, Administrator</h1>
         <div className="stats-container">
-          <div className="stat-box">
-            <h3>Total Number of Rooms - Three Sharing</h3>
-            <p>100</p>
+          {/* Add your statistics cards here */}
+          <div className="stat-card">
+            <h3>Total Rooms</h3>
+            <p>150</p>
           </div>
-          <div className="stat-box">
-            <h3>Number of Students</h3>
-            <p>250</p>
+          <div className="stat-card">
+            <h3>Active Students</h3>
+            <p>450</p>
           </div>
-          <div className="stat-box">
-            <h3>Rooms Allotted (Three Sharing)</h3>
-            <p>84</p>
-          </div>
-          <div className="stat-box">
-            <h3>Available Rooms (Three Sharing)</h3>
-            <p>16</p>
+          <div className="stat-card">
+            <h3>Pending Requests</h3>
+            <p>23</p>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
-}
+};
 
-export default Adminhome;
+export default AdminHome;
