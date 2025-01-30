@@ -77,8 +77,9 @@ const ComplaintsPage = () => {
               Outpass Data
             </Link>
             <Link to="/complaints-page" className="nav-link active">
-              Complaints
+            Complaints
             </Link>
+
           </div>
         </div>
       </nav>

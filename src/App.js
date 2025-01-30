@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Routes, Route, Navigate, Link,} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate, Link} from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Homepage from "./components/user/Homepage";
@@ -34,7 +34,6 @@ function App() {
 
         {/* User Routes */}
         <Route path="/home" element={<Homepage />} />
-        <Route path="/profile" element={<UserProfile />} />
         <Route path="/experiences" element={<ExperiencesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
@@ -51,6 +50,7 @@ function App() {
         <Route path="/room-allocation" element={<RoomAllocation />} />
         <Route path="/outpass-data" element={<OutpassData />} />
         <Route path="/complaints-page" element={<ComplaintsPage />} />
+
         {/* <Route path="/admin-tickets" element={<AdminTickets />} />
         <Route path="/admin-outpass" element={<Outpass />} /> */}
 
