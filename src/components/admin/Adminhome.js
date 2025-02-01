@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './AdminHome.css'; // Create this CSS file
 
+
 const AdminHome = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -28,6 +29,9 @@ const AdminHome = () => {
             </Link>
             <Link to="/complaints-page" className="nav-link">
               Complaints
+            </Link>
+            <Link to="/vacate-request" className="nav-link">
+              Vacate Request
             </Link>
           </div>
         </div>

@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './RoomAllocation.css'; // Create this CSS file
 
+
 const RoomAllocation = () => {
   // Sample room allocation data
-  const [bookings, setBookings] = useState([
+  const [bookings] = useState([
     {
       id: 1,
-      name: 'John Doe',
+      name: 'Syed',
       email: 'john@example.com',
       roomNumber: '301',
       checkInDate: '2024-05-01',
@@ -17,7 +18,7 @@ const RoomAllocation = () => {
     },
     {
       id: 2,
-      name: 'Jane Smith',
+      name: 'Royal',
       email: 'jane@example.com',
       roomNumber: '205',
       checkInDate: '2024-05-03',
@@ -77,6 +78,9 @@ const RoomAllocation = () => {
             </Link>
             <Link to="/complaints-page" className="nav-link">
               Complaints
+            </Link>
+            <Link to="/vacate-request" className="nav-link">
+            Vacate Request
             </Link>
           </div>
         </div>

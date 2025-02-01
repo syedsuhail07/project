@@ -6,9 +6,10 @@ import Homepage from "./components/user/Homepage";
 import AdminHome from "./components/admin/AdminHome";
 import RoomAllocation from "./components/admin/RoomAllocation";
 import OutpassData from './components/admin/OutpassData';
-import ComplaintsPage from './components/admin/ComplaintsPage';
+import ComplaintsPage from "./components/admin/ComplaintsPage";
+import VacateRequest from "./components/admin/VacateRequest";
 // import AdminTickets from "./components/admin/AdminTickets";
-import UserProfile from "./components/user/Profile";
+// import UserProfile from "./components/user/Profile";
 // import Outpass from "./components/admin/Outpass";
 import AboutPage from "./components/user/AboutPage";
 import ExperiencesPage from "./components/user/ExperiencesPage";
@@ -45,12 +46,13 @@ function App() {
         <Route path="/vacate" element={<VacateRoom />} />
         <Route path="/profile" element={<Profile />} />
 
+
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/room-allocation" element={<RoomAllocation />} />
         <Route path="/outpass-data" element={<OutpassData />} />
-        
         <Route path="/complaints-page" element={<ComplaintsPage />} />
+        <Route path="/vacate-request" element={<VacateRequest />} />
 
         {/* <Route path="/admin-tickets" element={<AdminTickets />} />
         <Route path="/admin-outpass" element={<Outpass />} /> */}

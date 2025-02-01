@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./generateOutpass.css";
-import { useNavigate } from 'react-router-dom';
-
+import SignatureCanvas from 'react-signature-canvas';
 
 const GenerateOutpass = () => {
-  const navigate = useNavigate();
-
   const [outpassDetails, setOutpassDetails] = useState({
     name: "",
-    guardianName: "",
-    phoneNumber: "",
-    guardianPhoneNumber: "",
-    reason: "",
     year: "",
     roomNumber: "",
+    reason: "",
+    checkIn: "",
+    checkOut: ""
   });
 
   const [generated, setGenerated] = useState(false);
+  const sigCanvas = useRef({});
+  const [signature, setSignature] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +23,13 @@ const GenerateOutpass = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSignature(sigCanvas.current.toDataURL());
     setGenerated(true);
+  };
+
+  const handleClear = () => {
+    sigCanvas.current.clear();
+    setSignature(null);
   };
 
   const currentDate = new Date();
@@ -38,7 +42,7 @@ const GenerateOutpass = () => {
 
   return (
     <div className="container generate-outpass mt-5">
-      <h2 className="text-center mb-4" onClick={() => navigate("/generate-outpass")}>Generate Outpass</h2>
+      <h2 className="text-center mb-4">Generate Outpass</h2>
       {!generated ? (
         <form onSubmit={handleSubmit} className="outpass-form">
           <div className="form-group mb-3">
@@ -60,7 +64,6 @@ const GenerateOutpass = () => {
               className="form-control"
               value={outpassDetails.year}
               onChange={handleInputChange}
-              placeholder="Enter your year of study"
               required
             />
           </div>
@@ -72,40 +75,6 @@ const GenerateOutpass = () => {
               className="form-control"
               value={outpassDetails.roomNumber}
               onChange={handleInputChange}
-              placeholder="Enter your room number"
-              required
-            />
-          </div>
-          <div className="form-group mb-3">
-            <label>Parent/Guardian Name:</label>
-            <input
-              type="text"
-              name="guardianName"
-              className="form-control"
-              value={outpassDetails.guardianName}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group mb-3">
-            <label>Phone Number:</label>
-            <input
-              type="tel"
-              name="phoneNumber"
-              className="form-control"
-              value={outpassDetails.phoneNumber}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="form-group mb-3">
-            <label>Parent/Guardian Phone Number:</label>
-            <input
-              type="tel"
-              name="guardianPhoneNumber"
-              className="form-control"
-              value={outpassDetails.guardianPhoneNumber}
-              onChange={handleInputChange}
               required
             />
           </div>
@@ -114,12 +83,38 @@ const GenerateOutpass = () => {
             <textarea
               name="reason"
               className="form-control"
-              rows="4"
+              rows="3"
               value={outpassDetails.reason}
               onChange={handleInputChange}
-              placeholder="Write your reason here..."
               required
             ></textarea>
+          </div>
+          <div className="form-group mb-3">
+            <label>Check-Out Date:</label>
+            <input
+              type="date"
+              name="checkOut"
+              className="form-control"
+              value={outpassDetails.checkOut}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="form-group mb-3">
+            <label>Check-In Date:</label>
+            <input
+              type="date"
+              name="checkIn"
+              className="form-control"
+              value={outpassDetails.checkIn}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="form-group mb-3">
+            <label>Student Digital Signature:</label>
+            <SignatureCanvas ref={sigCanvas} penColor="black" canvasProps={{width: 300, height: 100, className: "signature-canvas"}} />
+            <button type="button" className="btn btn-secondary mt-2" onClick={handleClear}>Clear Signature</button>
           </div>
           <button type="submit" className="btn btn-primary w-100">
             Generate Outpass
@@ -132,19 +127,15 @@ const GenerateOutpass = () => {
             <p>Issued on {formattedDate} at {formattedTime}</p>
           </div>
           <div className="receipt-body">
-            <p>I, <strong>{outpassDetails.name}</strong>, a student of <strong>{outpassDetails.year}</strong> year, residing in room <strong>{outpassDetails.roomNumber}</strong>, request permission to leave the hostel for the following reason:</p>
+            <p>I, <strong>{outpassDetails.name}</strong>, a student of <strong>{outpassDetails.year}</strong> year, residing in room <strong>{outpassDetails.roomNumber}</strong>, formally request permission to leave the hostel premises for a specific period.</p>
+            <p>The purpose of my request is as follows:</p>
             <p><strong>Reason:</strong> {outpassDetails.reason}</p>
-            <p>My contact details are as follows:</p>
-            <ul>
-              <li><strong>Phone:</strong> {outpassDetails.phoneNumber}</li>
-              <li><strong>Parent/Guardian Name:</strong> {outpassDetails.guardianName}</li>
-              <li><strong>Parent/Guardian Phone:</strong> {outpassDetails.guardianPhoneNumber}</li>
-            </ul>
+            <p>I intend to leave the hostel on <strong>{outpassDetails.checkOut}</strong> and will return on <strong>{outpassDetails.checkIn}</strong>. I assure compliance with all hostel regulations and will report back as scheduled.</p>
           </div>
           <div className="signatures mt-4">
             <div>
-              <p>________________________</p>
-              <p>Parent/Guardian Signature</p>
+              {signature && <img src={signature} alt="Student Signature" className="signature-preview" />}
+              <p>Student Signature</p>
             </div>
             <div>
               <p>________________________</p>

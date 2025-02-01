@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './OutpassData.css'; // Create this CSS file
 
+
 const OutpassData = () => {
   // Sample outpass data (status removed)
   const [outpasses, setOutpasses] = useState([
     {
       id: 1,
-      name: 'John Doe',
+      name: 'Syed',
       roomNo: '301',
       fromDate: '2024-05-01',
       toDate: '2024-05-03',
@@ -17,7 +18,7 @@ const OutpassData = () => {
     },
     {
       id: 2,
-      name: 'Jane Smith',
+      name: 'Royal',
       roomNo: '205',
       fromDate: '2024-05-05',
       toDate: '2024-05-07',
@@ -77,6 +78,9 @@ const OutpassData = () => {
             </Link>
             <Link to="/complaints-page" className="nav-link">
               Complaints
+            </Link>
+            <Link to="/vacate-request" className="nav-link">
+            Vacate Request
             </Link>
           </div>
         </div>
