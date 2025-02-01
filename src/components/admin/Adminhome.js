@@ -89,6 +89,15 @@ const AdminHome = () => {
             <p>23</p>
           </div>
         </div>
+        <div className="world-map-card">
+          <div className="map-container">
+            <div className="world-map"></div>
+          </div>
+          <div className="map-overlay">
+            <h3>Hostel Network</h3>
+            <p>Explore our hostels across the Campus</p>
+          </div>
+        </div>
       </main>
     </div>
   );
