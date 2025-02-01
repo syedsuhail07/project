@@ -1,55 +1,30 @@
-// RoomAllocation.js
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { Link } from 'react-router-dom';
-import './RoomAllocation.css'; // Create this CSS file
-
+import './RoomAllocation.css';
 
 const RoomAllocation = () => {
-  // Sample room allocation data
-  const [bookings] = useState([
+  const [bookings, setBookings] = useState([
     {
       id: 1,
       name: 'Syed',
-      email: 'john@example.com',
+      email: 'syed@example.com',
       roomNumber: '301',
       checkInDate: '2024-05-01',
-      duration: '7 days',
-      status: 'Confirmed'
+      status: 'Pending'
     },
     {
       id: 2,
       name: 'Royal',
-      email: 'jane@example.com',
+      email: 'royal@example.com',
       roomNumber: '205',
       checkInDate: '2024-05-03',
-      duration: '5 days',
       status: 'Pending'
-    },
-    // Add more sample data as needed
+    }
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
-
-  // Sorting functionality
-  const sortedBookings = [...bookings].sort((a, b) => {
-    if (sortConfig.key) {
-      if (a[sortConfig.key] < b[sortConfig.key]) {
-        return sortConfig.direction === 'asc' ? -1 : 1;
-      }
-      if (a[sortConfig.key] > b[sortConfig.key]) {
-        return sortConfig.direction === 'asc' ? 1 : -1;
-      }
-    }
-    return 0;
-  });
-
-  // Search functionality
-  const filteredBookings = sortedBookings.filter(booking =>
-    Object.values(booking).some(value =>
-      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   const handleSort = (key) => {
     let direction = 'asc';
@@ -57,53 +32,52 @@ const RoomAllocation = () => {
       direction = 'desc';
     }
     setSortConfig({ key, direction });
+
+    const sortedBookings = [...bookings].sort((a, b) => {
+      if (key === 'roomNumber') {
+        return direction === 'asc' ? a[key] - b[key] : b[key] - a[key];
+      }
+      return direction === 'asc' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key]);
+    });
+
+    setBookings(sortedBookings);
+  };
+
+  const handleApprove = (id) => {
+    setBookings(bookings.map(booking => 
+      booking.id === id ? { ...booking, status: 'Approved' } : booking
+    ));
+  };
+
+  const handleReject = (id) => {
+    setBookings(bookings.map(booking => 
+      booking.id === id ? { ...booking, status: 'Rejected' } : booking
+    ));
   };
 
   return (
     <div className="room-allocation-container">
-      {/* Navigation Bar (Same as AdminHome) */}
       <nav className="admin-navbar">
         <div className="nav-left">
           <div className="logo">
-          <Link to="/admin" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <h2>Admin Panel</h2>
-      </Link>
+            <Link to="/admin" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <h2>Admin Panel</h2>
+            </Link>
           </div>
           <div className="nav-links">
-            <Link to="/room-allocation" className="nav-link active">
-              Room Allocation
-            </Link>
-            <Link to="/outpass-data" className="nav-link">
-              Outpass Data
-            </Link>
-            <Link to="/complaints-page" className="nav-link">
-              Complaints
-            </Link>
-            <Link to="/vacate-request" className="nav-link">
-            Vacate Request
-            </Link>
+            <Link to="/room-allocation" className="nav-link active">Room Allocation</Link>
+            <Link to="/outpass-data" className="nav-link">Outpass Data</Link>
+            <Link to="/complaints-page" className="nav-link">Complaints</Link>
+            <Link to="/vacate-request" className="nav-link">Vacate Request</Link>
           </div>
         </div>
-        
-        {/* <div className="nav-right">
-          <button className="logout-btn">
-            Logout
-          </button>
-        </div> */}
       </nav>
       
-
-      {/* Main Content */}
       <div className="room-allocation-content">
         <h1>Room Allocation Management</h1>
         
         <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search bookings..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          <input type="text" placeholder="Search bookings..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
 
         <div className="bookings-table-container">
@@ -119,35 +93,45 @@ const RoomAllocation = () => {
                 <th onClick={() => handleSort('roomNumber')}>
                   Room {sortConfig.key === 'roomNumber' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
                 </th>
-                {/* <th onClick={() => handleSort('checkInDate')}>
-                  Check-in {sortConfig.key === 'checkInDate' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                </th>
-                <th onClick={() => handleSort('duration')}>
-                  Duration {sortConfig.key === 'duration' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                </th> */}
-                <th onClick={() => handleSort('status')}>
-                  Status {sortConfig.key === 'status' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                </th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {filteredBookings.map(booking => (
+              {bookings.map(booking => (
                 <tr key={booking.id}>
-                  <td>{booking.name}</td>
+                  <td>
+                    <button className="student-name-btn" onClick={() => setSelectedStudent(booking)}>
+                      {booking.name}
+                    </button>
+                  </td>
                   <td>{booking.email}</td>
                   <td>{booking.roomNumber}</td>
-                  {/* <td>{booking.checkInDate}</td>
-                  <td>{booking.duration}</td> */}
                   <td>
-                    <span className={`status-badge ${booking.status.toLowerCase()}`}>
-                      {booking.status}
-                    </span>
+                    {booking.status === 'Pending' ? (
+                      <>
+                        <button onClick={() => handleApprove(booking.id)} className="approve-btn" style={{ marginRight: '10px', backgroundColor: 'green', color: 'white' }}>Approve</button>
+                        <button onClick={() => handleReject(booking.id)} className="reject-btn" style={{ backgroundColor: 'red', color: 'white' }}>Reject</button>
+                      </>
+                    ) : (
+                      <button className={booking.status === 'Approved' ? 'approved-btn' : 'rejected-btn'} style={{ backgroundColor: booking.status === 'Approved' ? 'green' : 'red', color: 'white' }} disabled>{booking.status}</button>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        {selectedStudent && (
+          <div className="student-details-modal">
+            <h2>Student Details</h2>
+            <p><strong>Name:</strong> {selectedStudent.name}</p>
+            <p><strong>Email:</strong> {selectedStudent.email}</p>
+            <p><strong>Room Number:</strong> {selectedStudent.roomNumber}</p>
+            <p><strong>Check-in Date:</strong> {selectedStudent.checkInDate}</p>
+            <button onClick={() => setSelectedStudent(null)} className="close-modal">Close</button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './ComplaintsPage.css'; 
 
-
 const ComplaintsPage = () => {
   const location = useLocation();
   const [complaints, setComplaints] = useState([
-    { id: 1, user: 'Syed', issue: 'WiFi not working', status: 'pending' },
-    { id: 2, user: 'Royal', issue: 'Room AC not functioning', status: 'pending' }
+    { id: 1, user: 'Syed', email: 'syed@example.com', roomNumber: '301', issue: 'WiFi not working', status: 'pending' },
+    { id: 2, user: 'Royal', email: 'royal@example.com', roomNumber: '205', issue: 'Room AC not functioning', status: 'pending' }
   ]);
 
   const handleResolve = (id) => {
@@ -42,7 +41,9 @@ const ComplaintsPage = () => {
           complaints.map(complaint => (
             <div key={complaint.id} className="complaint-card">
               <h4>{complaint.user}</h4>
-              <p>{complaint.issue}</p>
+              <p><strong>Email:</strong> {complaint.email}</p>
+              <p><strong>Room Number:</strong> {complaint.roomNumber}</p>
+              <p><strong>Issue:</strong> {complaint.issue}</p>
               <p>Status: <span className={complaint.status}>{complaint.status}</span></p>
               {complaint.status === 'pending' && (
                 <button onClick={() => handleResolve(complaint.id)} className="resolve-btn">Resolve</button>
