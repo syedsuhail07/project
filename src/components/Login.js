@@ -13,56 +13,79 @@ function Login() {
   };
 
   const handleLogin = (e) => {
-    e.preventDefault(); // Prevent form refresh
-
+    e.preventDefault();
     const { email, password } = loginInfo;
 
-    // Debugging: Log the credentials to ensure they are captured correctly
-    console.log('Email:', email, 'Password:', password);
-
-    // Navigate based on credentials
     if (email === 'admin@example.com' && password === 'admin123') {
-      navigate('/admin'); // Redirect to admin dashboard
+      navigate('/admin');
     } else if (email === 'user@example.com' && password === 'user123') {
-      navigate('/home'); // Redirect to user dashboard
+      navigate('/home');
     } else {
-      setError('Invalid email or password');
+      setError('❌ Invalid email or password');
     }
   };
 
-
   return (
     <div className="login-container">
+      <div className="floating-emojis">
+        <span>🏀</span>
+        <span>⚽</span>
+        <span>🎓</span>
+        <span>🏠</span>
+        <span>📚</span>
+      </div>
+      
       <div className="login-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Hostel Logo" className="login-logo" />
-        <h2>Login</h2>
+        <div className="login-header">
+          <h1>🎓 Campus Connect 🏠</h1>
+          <p>Your Gateway to Hostel Life & Sports 🏆</p>
+        </div>
+        
         <form onSubmit={handleLogin}>
           <div className="input-group">
-            <label>Email:</label>
+            <label>📧 Email:</label>
             <input
               type="email"
               name="email"
               value={loginInfo.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder="student@campus.edu"
               required
             />
           </div>
+          
           <div className="input-group">
-            <label>Password:</label>
+            <label>🔑 Password:</label>
             <input
               type="password"
               name="password"
               value={loginInfo.password}
               onChange={handleChange}
-              placeholder="Enter your password"
+              placeholder="••••••••"
               required
             />
           </div>
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="login-button">Login</button>
+          
+          {error && <div className="error-message">🚨 {error}</div>}
+          
+          <button type="submit" className="login-button">
+            🚪 Login
+          </button>
+          
+          <div className="social-login">
+            <button type="button" className="google-btn">
+              🅖 Continue with Google
+            </button>
+            <button type="button" className="microsoft-btn">
+              Ⓜ️ Continue with Microsoft
+            </button>
+          </div>
         </form>
-        <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
+        
+        <div className="login-footer">
+          <p>🧠 Forgot Password? <Link to="/reset">Reset Here</Link></p>
+          <p>👋 New Student? <Link to="/signup">Join Our Community</Link></p>
+        </div>
       </div>
     </div>
   );

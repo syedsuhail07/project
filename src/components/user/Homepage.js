@@ -1,215 +1,178 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; 
-import "./HeroSection.css"; 
-import "bootstrap/dist/css/bootstrap.min.css";
-import './Homepage.css';
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import "./Homepage.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const handleDropdownToggle = () => {
-    setDropdownOpen(!dropdownOpen);
-};
+
+  // Floating emojis data
+  const emojis = ['🏠', '🏀', '⚽', '📚', '🏸', '🛏️', '🎓'];
+  const [floatingElements] = useState(
+    Array(15).fill().map((_, i) => ({
+      emoji: emojis[Math.floor(Math.random() * emojis.length)],
+      style: {
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 2}s`,
+        fontSize: `${Math.random() * 20 + 20}px`
+      }
+    }))
+  );
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (!isAuthenticated) {
-        navigate("/login"); // Redirect to login if not logged in
+      navigate("/login");
     }
-}, [navigate]);
+  }, [navigate]);
 
   return (
-    <div>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
-        <a className="navbar-brand"><b>Hostel Hub</b></a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item"><a className="nav-link" href="/home">Home</a></li>
-            <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
-            <li className="nav-item"><a className="nav-link" href="/experiences">Experiences</a></li>
-            <li className="nav-item"><a className="nav-link" href="/resources">Resources</a></li>
-            <li className="nav-item"><a className="nav-link" href="/contact">Contact</a></li>
-          </ul>
-        </div>
-        <div className="relative">
-                <FaUserCircle 
-                    size={32} 
-                    className="cursor-pointer text-gray-700"
-                    onClick={handleDropdownToggle}
-                />
-                {dropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg">
-                        <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
-                            Profile
-                        </Link>
-                        <Link to="/Logout" className="block px-4 py-2 hover:bg-gray-100">
-                            Logout
-                        </Link>
+    <div className="hostel-homepage">
+      {/* Floating background emojis */}
+      <div className="floating-emojis">
+        {floatingElements.map((el, i) => (
+          <span key={i} className="floating-emoji" style={el.style}>
+            {el.emoji}
+          </span>
+        ))}
+      </div>
 
-                        {/* <button 
-                            className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                            onClick={() => alert("Logging out...")}
-                        >
-                            Logout
-                        </button> */}
-                    </div>
-                )}
-            </div>
+      {/* Enhanced Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-dark hostel-navbar">
+        <div className="container">
+          <Link className="navbar-brand" to="/home">
+            <span className="hostel-logo">🏠 HostelHub</span>
+          </Link>
+          <div className="collapse navbar-collapse">
+            <ul className="navbar-nav ml-auto">
+              {['Home', 'About', 'Experiences', 'Resources', 'Contact'].map((item) => (
+                <li key={item} className="nav-item">
+                  <Link className="nav-link" to={`/${item.toLowerCase()}`}>
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="user-profile">
+            <FaUserCircle 
+              size={32} 
+              className="profile-icon"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            />
+            {dropdownOpen && (
+              <div className="profile-dropdown">
+                <Link to="/profile" className="dropdown-item">👤 Profile</Link>
+                <Link to="/logout" className="dropdown-item">🚪 Logout</Link>
+              </div>
+            )}
+          </div>
+        </div>
       </nav>
-      
 
       {/* Hero Section */}
-      <section className="hero-section text-center d-flex justify-content-center align-items-center" id="home">
-        <div className="container">
-          <h1 className="display-4">Hostel Hub</h1>
-          <p className="lead">
-            Convenient online platform for students to book rooms, request changes,
-            generate outpasses, submit complaints, and more.
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title animate__animated animate__fadeInDown">
+            Welcome to HostelHub 🎓
+          </h1>
+          <p className="hero-subtitle">
+            Your Ultimate Campus Accommodation Solution 🏠
           </p>
-          <button className="btn btn-primary" onClick={() => navigate("/experiences")}>Explore</button>
+          <button 
+            className="cta-button"
+            onClick={() => navigate("/bookroom")}
+          >
+            Book Your Room Now 🛏️
+          </button>
         </div>
       </section>
 
-      {/* Discover Section */}
-      <section className="text-center py-5 discover-section">
+      {/* Features Grid */}
+      <section className="features-section">
         <div className="container">
-          <h2 className="display-4 text-uppercase">Discover More</h2>
-          <p className="mt-3">Welcome to Hostel Hub, where convenience meets comfort for student accommodations.</p>
-          <button
-    style={{
-        color: "black",
-        border: "2px solid blue",
-        padding: "10px 20px",
-        fontSize: "16px",
-        fontWeight: "bold",
-        background: "transparent",
-        borderRadius: "8px",
-        cursor: "pointer",
-        transition: "0.3s",
-    }}
-    onMouseEnter={(e) => (e.target.style.background = "blue", e.target.style.color = "white")}
-    onMouseLeave={(e) => (e.target.style.background = "transparent", e.target.style.color = "black")}
-    onClick={() => navigate("/resources")}
->
-    Explore
-</button>
-
+          <h2 className="section-title">Key Features ⚡</h2>
+          <div className="features-grid">
+            {[
+              // { title: 'Room Booking', emoji: '🔑', link: '/bookroom' },
+              { title: 'Change Request', emoji: '🔄', link: '/changeroom' },
+              { title: 'Digital Outpass', emoji: '📄', link: '/outpass' },
+              { title: 'Quick Complaints', emoji: '📢', link: '/complaints' },
+              { title: 'Vacate Request', emoji: '🚪', link: '/vacate' },
+              // { title: 'Campus Resources', emoji: '📚', link: '/resources' },
+            ].map((feature, index) => (
+              <div 
+                key={index}
+                className="feature-card"
+                onClick={() => navigate(feature.link)}
+              >
+                <div className="feature-emoji">{feature.emoji}</div>
+                <h3 className="feature-title">{feature.title}</h3>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* Features Section */}
-    <section className="py-5 features-section" id="features">
-    <div className="container">
-    <h2 className="text-center mb-4">Key Offerings for Students</h2>
-    <p className="text-center">
-      Students can easily book rooms, request room changes, generate outpasses,
-      raise complaints, and submit vacate room requests through our platform.
-    </p>
-
-    <section className="hero-section d-flex flex-column justify-content-center align-items-center">
-      <h1 className="hero-title">book your room <br /> <span>Comfortable and Hassle-free stay</span></h1>
-      <button className="btn btn-light hero-button" onClick={() => navigate("/bookroom")}>Book Now</button>
-    </section>
-    <div>
-    </div>
-
-    <div className="row text-center mt-4">
-      <div className="col-md-6 col-lg-3 mb-4">
-        <div className="card feature-card">
-          <h5 className="card-title" onClick={() => navigate("/changeroom")}>Change Room Request</h5>
-          <p className="card-text">
-            Submit a request to change your room quickly and easily.
-          </p>
-        </div>
-      </div>
-      <div className="col-md-6 col-lg-3 mb-4">
-        <div className="card feature-card">
-          <h5 className="card-title" onClick={() => navigate("/outpass")}>Generate Outpass</h5>
-          <p className="card-text">
-            Create outpasses efficiently to save time.
-          </p>
-        </div>
-      </div>
-      <div className="col-md-6 col-lg-3 mb-4">
-        <div className="card feature-card">
-          <h5 className="card-title" onClick={() => navigate("/complaints")}>Complaints</h5>
-          <p className="card-text">
-            Submit and track complaints for faster resolution.
-          </p>
-        </div>
-      </div>
-      <div className="col-md-6 col-lg-3 mb-4">
-        <div className="card feature-card">
-          <h5 className="card-title" onClick={() => navigate("/vacate")}>Vacate Room Request</h5>
-          <p className="card-text">
-            Request to vacate your room without hassle.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
       {/* Testimonials Section */}
-      <section className="py-5 testimonials-section bg-light">
-        <div className="container text-center">
-          <h2>Student Reviews</h2>
-          <div className="row mt-4">
-            <div className="col-md-4">
-              <p>“The change room request feature saved me a lot of time.”</p>
-              <p className="font-weight-bold">Ahmad sheik</p>
-            </div>
-            <div className="col-md-4">
-              <p>“I appreciate how quickly I can generate outpasses.”</p>
-              <p className="font-weight-bold">Manish Royal</p>
-            </div>
-            <div className="col-md-4">
-              <p>“The complaints section helped address my concerns.”</p>
-              <p className="font-weight-bold">BrownHood</p>
-            </div>
+      <section className="testimonials-section">
+        <div className="container">
+          <h2 className="section-title">Student Experiences 🗣️</h2>
+          <div className="testimonials-grid">
+            {[
+              { 
+                text: "The room booking process was seamless!",
+                author: "Ahmad Sheikh ⭐⭐⭐⭐⭐",
+                emoji: "😊"
+              },
+              { 
+                text: "Best hostel management system ever!",
+                author: "Manish Royal ⭐⭐⭐⭐⭐",
+                emoji: "🎉"
+              },
+              { 
+                text: "Quick complaint resolution system",
+                author: "BrownHood ⭐⭐⭐⭐",
+                emoji: "🚀"
+              }
+            ].map((testimonial, index) => (
+              <div key={index} className="testimonial-card">
+                <div className="testimonial-emoji">{testimonial.emoji}</div>
+                <p className="testimonial-text">"{testimonial.text}"</p>
+                <p className="testimonial-author">{testimonial.author}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-5 contact-section" id="contact">
-        <div className="container text-center">
-          <h2>Contact Us Today</h2>
-          <div className="row mt-4">
-            <div className="col-md-6">
-              <p>Address: IN</p>
-              <p>Email: <a href="mailto:contact@hostelhub.com">contact@hostelhub.com</a></p>
-              <p>Phone: +91 12345 67890</p>
-            </div>
-            <div className="col-md-6">
-              <div className="bg-secondary text-white d-flex align-items-center justify-content-center" style={{ height: "200px", borderRadius: "10px" }}>
-                Image Placeholder
+      <footer className="contact-footer">
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>🏠 HostelHub</h3>
+              <p>Redefining Campus Living</p>
+              <div className="social-links">
+                {['📘', '📸', '🐦'].map((emoji, i) => (
+                  <span key={i} className="social-icon">{emoji}</span>
+                ))}
               </div>
             </div>
+            <div className="footer-section">
+              <h4>Contact Us 📞</h4>
+              <p>📧 contact@hostelhub.com</p>
+              <p>📱 +91 12345 67890</p>
+              <p>📍 Campus Road, University Town</p>
+            </div>
           </div>
-          <footer className="text-center mt-5">
-          <p>© 2035 by Hostel Hub</p>
-        </footer>
+          <div className="footer-bottom">
+            <p>© 2023 HostelHub | Campus Accommodation Solutions</p>
+          </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 };
