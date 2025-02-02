@@ -1,134 +1,137 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./Homepage.css";
 import "./AboutPage.css";
 
 function AboutPage() {
   const navigate = useNavigate();
-  return (
-    <div>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
-      <a className="navbar-brand"> <b>Hostel Hub</b></a>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item"><a className="nav-link" href="/home">Home</a></li>
-            <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
-            <li className="nav-item"><a className="nav-link" href="/experiences">Experiences</a></li>
-            <li className="nav-item"><a className="nav-link" href="/resources">Resources</a></li>
-            <li className="nav-item"><a className="nav-link" href="/contact">Contact</a></li>
-          </ul>
+  return (
+    <div className="about-container">
+      {/* Floating Hostel Emojis */}
+      <div className="floating-emojis">
+        {['🏠', '🛏️', '📚', '🚪', '🎓', '🏢', '🪑'].map((emoji, index) => (
+          <span 
+            key={index} 
+            className="floating-emoji"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              fontSize: `${Math.random() * 20 + 20}px`
+            }}
+          >
+            {emoji}
+          </span>
+        ))}
+      </div>
+
+      {/* Enhanced Navbar */}
+      <nav className="navbar hostel-navbar">
+        <div className="navbar-brand">🏠 HostelHub</div>
+        <div className="nav-links">
+          {['Home', 'About', 'Experiences', 'Resources', 'Contact'].map((item) => (
+            <a 
+              key={item} 
+              href={`/${item.toLowerCase()}`} 
+              className="nav-link"
+            >
+              {item}
+            </a>
+          ))}
         </div>
       </nav>
-      
 
-      {/* Purpose Section */}
-      <section className="purpose-section text-center d-flex justify-content-center align-items-center" id="about">
-        <div className="container">
-          <h1 className="display-4">Our Purpose</h1>
-          <p className="lead">
-            At Hostel Hub, our mission is to provide an intuitive platform for students to easily book rooms, request room changes, generate outpasses, raise complaints, and submit vacate room requests.
+      {/* Hero Section */}
+      <section className="hero-section animate-slide-in">
+        <div className="hero-content">
+          <h1>🏨 About HostelHub</h1>
+          <p className="hero-subtitle">
+            Redefining Student Accommodation Management 🎓
           </p>
-          <button className="btn btn-primary" onClick={() => navigate("/resources")}>Learn More</button>
         </div>
       </section>
 
-      {/* Meet the Team Section */}
-      <section className="team-section py-5" id="team">
-        <div className="container">
-          <h2 className="text-center mb-4">Meet Our Team</h2>
-          <div className="row">
-            <div className="col-md-3 text-center">
-              <div className="team-member">
-                <div className="profile-picture bg-light"></div>
-                <h5>Syed</h5>
-                <p>CTO</p>
-                <p className="social-icons">✖️</p>
-              </div>
-            </div>
-            <div className="col-md-3 text-center">
-              <div className="team-member">
-                <div className="profile-picture bg-light"></div>
-                <h5>Mazen</h5>
-                <p>COO</p>
-                <p className="social-icons">📘</p>
-              </div>
-            </div>
-            <div className="col-md-3 text-center">
-              <div className="team-member">
-                <div className="profile-picture bg-light"></div>
-                <h5>Jesvin </h5>
-                <p>Marketing Manager</p>
-                <p className="social-icons">📷 </p>
-              </div>
-            </div>
-            <div className="col-md-3 text-center">
-              <div className="team-member">
-                <div className="profile-picture bg-light"></div>
-                <h5>Ayman</h5>
-                <p>Customer Support</p>
-                <p className="social-icons">🔗</p>
-              </div>
-            </div>
+      {/* Mission Section */}
+      <section className="mission-section animate-fade-in">
+        <div className="mission-card glass-card">
+          <div className="mission-content">
+            <h2>📜 Our Mission</h2>
+            <p>
+              To revolutionize hostel management through innovative technology, 
+              creating seamless experiences for students and administrators alike.
+            </p>
+            <button 
+              className="cta-button"
+              onClick={() => navigate("/resources")}
+            >
+              Explore Features →
+            </button>
           </div>
+          <div className="mission-emojis">
+            <span>🛏️</span>
+            <span>📅</span>
+            <span>🔑</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="team-section animate-slide-up">
+        <h2>👥 Meet Our Team</h2>
+        <div className="team-grid">
+          {[
+            { name: "Syed", role: "CTO", emoji: "💻", social: "✖️" },
+            { name: "Mazen", role: "COO", emoji: "📈", social: "📘" },
+            { name: "Jesvin", role: "Marketing", emoji: "📢", social: "📷" },
+            { name: "Ayman", role: "Support", emoji: "🤝", social: "🔗" }
+          ].map((member, index) => (
+            <div key={index} className="team-card">
+              <div className="profile-emoji">{member.emoji}</div>
+              <h3>{member.name}</h3>
+              <p className="role">{member.role}</p>
+              <div className="social-icon">{member.social}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Vision Section */}
-      <section className="vision-section d-flex align-items-center py-5" id="vision">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <h2>Our Vision. Our Mission. Our Legacy.</h2>
-              <p>All About Our Story</p>
-              <p>This is the space to introduce visitors to the business or brand. Briefly explain who's behind it, what it does and what makes it unique.</p>
-              {/* <button
-    style={{
-        color: "black",
-        border: "2px solid blue",
-        padding: "10px 20px",
-        fontSize: "16px",
-        fontWeight: "bold",
-        background: "transparent",
-        borderRadius: "8px",
-        cursor: "pointer",
-        transition: "0.3s",
-    }}
-    onMouseEnter={(e) => (e.target.style.background = "blue", e.target.style.color = "white")}
-    onMouseLeave={(e) => (e.target.style.background = "transparent", e.target.style.color = "black")}
-    onClick={() => navigate("/bookRoom")}
->
-    Explore
-</button> */}
-
-            </div>
-            <div className="col-md-6 d-flex justify-content-center">
-              <div className="vision-image bg-light"></div>
-            </div>
+      <section className="vision-section animate-fade-in">
+        <div className="vision-content">
+          <div className="vision-text">
+            <h2>🚀 </h2>
+            <p>
+              To become the global standard in campus accommodation management, 
+              empowering educational institutions with smart, intuitive solutions.
+            </p>
+            <button 
+              className="cta-button-outline"
+              onClick={() => navigate("/complaints")}>
+              OutPass 
+            </button>
+            
+          </div>
+          <div className="vision-graphics">
+            <div className="graphic-item">🏢</div>
+            <div className="graphic-item">📊</div>
+            <div className="graphic-item">🤖</div>
           </div>
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="text-center py-4 bg-light">
-        <p>© 2025 by Hostel Hub</p>
+      {/* Footer */}
+      <footer className="hostel-footer animate-slide-up">
+        <div className="footer-content">
+          <div className="footer-brand">🏠 HostelHub</div>
+          <div className="footer-links">
+            <a href="/contact">📞 Contact</a>
+            <a href="/privacy">🔒 Privacy</a>
+            <a href="/terms">📝 Terms</a>
+          </div>
+        </div>
+        <p className="copyright">© 2025 HostelHub - Campus Accommodation Solutions</p>
       </footer>
     </div>
   );
-};
+}
 
 export default AboutPage;

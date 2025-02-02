@@ -1,79 +1,298 @@
-.generate-outpass {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --background-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.outpass-container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: var(--background-gradient);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.outpass-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+}
+
+.outpass-header h1 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.outpass-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+}
+
+.form-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #eee;
+}
+
+.form-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modern-input, .modern-select, .modern-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.modern-input:focus, .modern-select:focus, .modern-textarea:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.modern-select {
+  appearance: none;
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 0.8rem center/1rem;
+}
+
+.modern-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.char-counter {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #95a5a6;
+  margin-top: 0.5rem;
+}
+
+.signature-container {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+}
+
+.signature-canvas {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background: #f8f9fa;
+}
+
+.signature-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.clear-signature-btn {
+  background: none;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clear-signature-btn:hover {
+  background: #fee;
+}
+
+.signature-notice {
+  font-size: 0.9rem;
+  color: #95a5a6;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
+}
+
+/* Outpass Receipt Styles */
+.outpass-receipt {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="14" fill="%23f0f0f0" opacity="0.3">OFFICIAL DOCUMENT</text></svg>');
+}
+
+.receipt-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.receipt-header {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.university-branding {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.university-branding img {
+  height: 60px;
+}
+
+.receipt-meta {
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.student-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.student-info p {
+  margin: 0;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.leave-details {
+  margin-bottom: 2rem;
+}
+
+.leave-details h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.signatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.signature-box {
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #ddd;
+}
+
+.signature-box img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.approval-stamp {
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 2px solid var(--accent-color);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  transform: rotate(-10deg);
+  margin-bottom: 1rem;
+}
+
+.security-notes {
+  border-top: 2px solid #eee;
+  padding-top: 1rem;
+}
+
+.receipt-footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.print-btn, .new-outpass-btn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.print-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.new-outpass-btn {
+  background: var(--secondary-color);
+  color: white;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
   }
   
-  .generate-outpass h2 {
-    color: #007bff;
-  }
-  
-  .description {
-    font-size: 1.1rem;
-    color: #555;
-  }
-  
-  .outpass-form {
-    margin-top: 20px;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-control {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
+  .outpass-receipt, .outpass-receipt * {
+    visibility: visible;
   }
   
   .outpass-receipt {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: none;
+    background: white;
   }
   
-  .outpass-receipt h3 {
-    color: #343a40;
-    margin-bottom: 20px;
+  .receipt-footer {
+    display: none;
   }
-  
-  .signatures {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .signatures p {
-    text-align: center;
-    margin: 0;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border: none;
-    padding: 10px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    padding: 10px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #5a6268;
-  }
-  
+}
