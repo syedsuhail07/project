@@ -28,7 +28,7 @@ function ContactPage() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
         <a className="navbar-brand">
-          <b>🏠 Hostel Hub</b>
+          <b>Hostel Hub</b>
         </a>
         <button
           className="navbar-toggler"
@@ -130,7 +130,7 @@ function ContactPage() {
       {/* Footer */}
       <footer className="footer-section animate-slide-up">
         <div className="container text-center">
-          <p>© 2035 by Hostel Hub - Campus Accommodation Solutions</p>
+          <p>© 2025 by Hostel Hub - Campus Accommodation Solutions</p>
         </div>
       </footer>
     </div>

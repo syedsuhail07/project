@@ -26,7 +26,7 @@ function AboutPage() {
 
       {/* Enhanced Navbar */}
       <nav className="navbar hostel-navbar">
-        <div className="navbar-brand">🏠 HostelHub</div>
+        <div className="navbar-brand">HostelHub</div>
         <div className="nav-links">
           {['Home', 'About', 'Experiences', 'Resources', 'Contact'].map((item) => (
             <a 
@@ -124,8 +124,8 @@ function AboutPage() {
           <div className="footer-brand">🏠 HostelHub</div>
           <div className="footer-links">
             <a href="/contact">📞 Contact</a>
-            <a href="/privacy">🔒 Privacy</a>
-            <a href="/terms">📝 Terms</a>
+            {/* <a href="/privacy">🔒 Privacy</a>
+            <a href="/terms">📝 Terms</a> */}
           </div>
         </div>
         <p className="copyright">© 2025 HostelHub - Campus Accommodation Solutions</p>

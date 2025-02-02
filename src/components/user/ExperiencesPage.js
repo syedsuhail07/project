@@ -80,7 +80,7 @@ const ExperiencesPage = () => {
 
       {/* Enhanced Navbar */}
       <nav className="hostel-navbar">
-        <div className="navbar-brand">🏠 HostelHub</div>
+        <div className="navbar-brand">HostelHub</div>
         <div className="nav-links">
           {['Home', 'About', 'Experiences', 'Resources', 'Contact'].map((item) => (
             <a key={item} href={`/${item.toLowerCase()}`} className="nav-link">

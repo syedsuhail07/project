@@ -47,7 +47,7 @@ function ResourcesPage() {
       {/* Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-5">
         <a className="navbar-brand">
-          <b>🏠 Hostel Hub</b>
+          <b>Hostel Hub</b>
         </a>
         <button
           className="navbar-toggler"
@@ -159,7 +159,7 @@ function ResourcesPage() {
 
       {/* Footer */}
       <footer className="text-center py-4 bg-light">
-        <p>© 2035 by Hostel Hub</p>
+        <p>© 2025 by Hostel Hub</p>
       </footer>
     </div>
   );

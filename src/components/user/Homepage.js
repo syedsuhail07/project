@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// Replace FaUserCircle with FaUserCog
-import { FaUserCog } from "react-icons/fa";
+import { FaUserCog } from "react-icons/fa"; // Replaced FaUserCircle with FaUserCog
 import "./Homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +13,7 @@ const HomePage = () => {
   const [floatingElements] = useState(
     Array(15)
       .fill()
-      .map((_, i) => ({
+      .map(() => ({
         emoji: emojis[Math.floor(Math.random() * emojis.length)],
         style: {
           left: `${Math.random() * 100}%`,
@@ -45,22 +44,41 @@ const HomePage = () => {
       {/* Enhanced Navbar */}
       <nav className="navbar navbar-expand-lg navbar-dark hostel-navbar">
         <div className="container">
+          {/* Brand */}
           <Link className="navbar-brand" to="/home">
             <span className="hostel-logo">HostelHub</span>
           </Link>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ml-auto">
-              {["Home", "About", "Experiences", "Resources", "Contact"].map((item) => (
-                <li key={item} className="nav-item">
-                  <Link className="nav-link" to={`/${item.toLowerCase()}`}>
-                    {item}
-                  </Link>
-                </li>
-              ))}
+
+          {/* Navbar Toggler (for mobile) */}
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          {/* Collapsible Menu Items */}
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav ms-auto">
+              {["Home", "About", "Experiences", "Resources", "Contact"].map(
+                (item) => (
+                  <li key={item} className="nav-item">
+                    <Link className="nav-link" to={`/${item.toLowerCase()}`}>
+                      {item}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
+
+          {/* User Profile Dropdown */}
           <div className="user-profile">
-            {/* Updated icon to FaUserCog */}
             <FaUserCog
               size={32}
               className="profile-icon"
@@ -69,7 +87,7 @@ const HomePage = () => {
             {dropdownOpen && (
               <div className="profile-dropdown">
                 <Link to="/profile" className="dropdown-item">
-                 👤 Profile
+                  👤 Profile
                 </Link>
                 <Link to="/logout" className="dropdown-item">
                   🚪 Logout
@@ -80,13 +98,24 @@ const HomePage = () => {
         </div>
       </nav>
 
+      {/* Permanent Notification Banner */}
+      {/* <div className="notification-banner">
+        <div className="banner-content">
+          🚨 Important: Hostel curfew timing changed to 11 PM - 6 AM • Submit
+          your room change requests by 25th October • Fire drill scheduled for
+          20th October 3 PM 🚨
+        </div>
+      </div> */}
+
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title animate__animated animate__fadeInDown">
             Welcome to HostelHub 🎓
           </h1>
-          <p className="hero-subtitle">Your Ultimate Campus Accommodation Solution 🏠</p>
+          <p className="hero-subtitle">
+            Your Ultimate Campus Accommodation Solution 🏠
+          </p>
           <button className="cta-button" onClick={() => navigate("/bookroom")}>
             Book Your Room Now 🛏️
           </button>
@@ -149,7 +178,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section (Footer) */}
       <footer className="contact-footer">
         <div className="container">
           <div className="footer-content">
@@ -172,7 +201,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2023 HostelHub | Campus Accommodation Solutions</p>
+            <p>© 2025 HostelHub | Campus Accommodation Solutions</p>
           </div>
         </div>
       </footer>
